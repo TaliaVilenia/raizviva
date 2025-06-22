@@ -15,6 +15,9 @@ const translations = {
 
 // Initialize cosmic functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Ensure page starts at the top
+    window.scrollTo(0, 0);
+    
     initializeLanguageSystem();
     initializeNavigation();
     initializeCosmicEffects();
@@ -575,6 +578,18 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
+// Additional page load handling to ensure top position
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+
+// Handle browser back/forward navigation
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        window.scrollTo(0, 0);
+    }
+});
 
 // Initialize everything when DOM is ready
 if (document.readyState === 'loading') {
