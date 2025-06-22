@@ -108,35 +108,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Form Submission
-document.querySelector('.contact-form form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    
-    // Simple validation
-    if (!name || !email) {
-        alert('Please fill in your name and email address.');
-        return;
-    }
-    
-    // Simulate form submission
-    const submitButton = this.querySelector('.submit-button');
-    const originalText = submitButton.textContent;
-    
-    submitButton.textContent = 'Sending...';
-    submitButton.disabled = true;
-    
-    setTimeout(() => {
-        alert('Thank you for your message! We\'ll get back to you soon.');
-        this.reset();
-        submitButton.textContent = originalText;
-        submitButton.disabled = false;
-    }, 1000);
-});
 
 // Animate elements on scroll
 const observerOptions = {
@@ -154,7 +125,7 @@ const observer = new IntersectionObserver(function(entries) {
 }, observerOptions);
 
 // Observe elements for animation
-document.querySelectorAll('.service-card, .about-text, .contact-item').forEach(el => {
+document.querySelectorAll('.service-card, .about-text').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
